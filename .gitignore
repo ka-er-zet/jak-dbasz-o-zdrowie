@@ -1,7 +1,8 @@
 # Node artifacts
 node_modules/
+# Lockfile (optional to ignore — remove if you want to track locks)
+# package-lock.json
 npm-debug.log*
-package-lock.json
 .DS_Store
 # build / distribution
 dist/
