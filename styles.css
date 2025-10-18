@@ -88,10 +88,17 @@ section {
 	--app-card-border: rgba(0,0,0,0.14);
 	--app-card-shadow: rgba(0,0,0,0.06);
 	/* semantic colors for progress comparisons -- map to Pico color tokens where possible */
-	--app-progress-blue: var(--pico-color-azure-300, rgb(81,180,255));
-	--app-bad: var(--pico-color-red-350, rgb(241,121,97));
-	--app-good: var(--pico-color-lime-100, #C1F335);
-	--app-amber: var(--pico-color-amber-150, #FECC63);
+	--app-progress-blue: rgb(81,180,255);
+	--app-progress-blue-dark: rgb(48,150,255);
+	--app-bad: rgb(238, 131, 110);
+	--app-bad-dark: rgb(200,70,50);
+	--app-good: #C1F335;
+	--app-good-dark: #7fa900;
+	--app-amber: #FECC63;
+	/* gradient helpers */
+	--app-gradient-blue: linear-gradient(90deg,var(--app-progress-blue), var(--app-progress-blue-dark));
+	--app-gradient-green: linear-gradient(90deg,var(--app-good), var(--app-good-dark));
+	--app-gradient-red: linear-gradient(90deg,var(--app-bad), var(--app-bad-dark));
 }
 @media (prefers-color-scheme: light) {
 	:root {
@@ -125,11 +132,9 @@ hr {
 /* Badges used in summary cards */
 
 /* Progress / declaration blue color used consistently */
+/* override app progress blue to the requested exact value */
 :root {
-	--app-progress-blue: #0d6efd;
-}
-@media (prefers-color-scheme: dark) {
-	:root { --app-progress-blue: #2b6cff; }
+	--app-progress-blue: rgb(81,180,255);
 }
 
 /* Style native progress element to use our blue (or per-element --progress-fill) */
@@ -152,16 +157,20 @@ progress::-moz-progress-bar { background: var(--progress-fill, linear-gradient(9
 	color: #000; /* default badge text color: black per request */
 	margin-bottom: 8px;
 }
-.badge--green { background: var(--app-good); color: #000; }
-.badge--red { background: var(--app-bad); color: #000; }
-.badge--orange { background: var(--app-amber); color: #000; }
+.badge--green { background-color: var(--app-good) !important; color: #000; }
+.badge--red { background-color: var(--app-bad) !important; color: #000; }
+.badge--orange { background-color: var(--app-amber) !important; color: #000; }
 
-/* make badge colors slightly muted in dark mode for better contrast */
-@media (prefers-color-scheme: dark) {
-	.badge--green { background: #23863a; }
-	.badge--red { background: #b31d28; }
-	.badge--orange { background: #d98d00; color: #fff; }
-}
+/* Summary layout helpers */
+.summary-grid { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.progress-row { display:flex; align-items:center; gap:8px; margin-top:8px; }
+.progress-row progress { flex:1 1 auto; min-width:0; }
+	.progress-value { white-space:nowrap; font-weight:700; text-align:right; min-width:64px; }
+
+/* mini list in profile card */
+.profile-sublist { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.mini-bar-wrap { position:relative; height:12px; background:var(--surface-level-100,#eee); border-radius:8px; overflow:visible; }
+	.mini-bar-fill { display:block; height:100%; border-radius:8px; transition:width .5s ease, background .3s ease; }
 @media (prefers-color-scheme: dark) {
 	.inline-prev.ghost:hover {
 		--pico-background-color: transparent;

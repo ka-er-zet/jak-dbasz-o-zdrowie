@@ -699,7 +699,8 @@ function renderSummary() {
   profileCard.appendChild(profileTitle);
 
   // declared value display + bar (0..3)
-  // show declaration text above its bar
+  // declared value display + bar (0..3)
+  // show declaration text above its bar; render numeric to the right of the bar
   const declBlock = document.createElement('div');
   declBlock.style.display = 'flex';
   declBlock.style.flexDirection = 'column';
@@ -710,6 +711,11 @@ function renderSummary() {
   const declNumText = (typeof declaredScore === 'number') ? pluralPoints(Math.round(declaredScore)) : 'Brak odpowiedzi';
   declLabel.innerHTML = `Deklaracja: ${declaredText} (${declNumText})`;
   declBlock.appendChild(declLabel);
+  // row: bar + numeric
+  const declRow = document.createElement('div');
+  declRow.style.display = 'flex';
+  declRow.style.alignItems = 'center';
+  declRow.style.gap = '12px';
   // bar container
   const declBarWrap = document.createElement('div');
   declBarWrap.style.position = 'relative';
@@ -717,122 +723,95 @@ function renderSummary() {
   declBarWrap.style.height = '14px';
   declBarWrap.style.background = 'var(--surface-level-100, #eee)';
   declBarWrap.style.borderRadius = '8px';
-  declBarWrap.style.overflow = 'hidden';
+  declBarWrap.style.overflow = 'visible';
   const declFill = document.createElement('div');
   declFill.style.height = '100%';
   declFill.style.width = `${(declaredScore / 3) * 100}%`;
-  // use same blue as progress bars (CSS var configured)
-  declFill.style.background = 'linear-gradient(90deg,var(--app-progress-blue), var(--app-progress-blue))';
-  // rounded fill
+  // use gradient variable for blue
+  declFill.style.background = 'var(--app-gradient-blue)';
   declFill.style.borderRadius = '8px';
   declFill.style.transition = 'width .5s ease';
   declBarWrap.appendChild(declFill);
-  // add declaration vertical marker so it aligns with other markers
+  // add declaration vertical marker
   const declMarker = document.createElement('div');
   const declMarkerLeft = (declaredScore / 3) * 100;
-  // allow the marker to be fully visible even if it sticks out above the bar
-  declBarWrap.style.overflow = 'visible';
   declMarker.style.position = 'absolute';
   declMarker.style.left = `${declMarkerLeft}%`;
-  // place marker slightly above the bar and make it more visible
   declMarker.style.top = '-8px';
-  declMarker.style.width = '4px';
-  declMarker.style.height = '28px';
-  declMarker.style.background = 'var(--app-progress-blue, #2b6cff)';
-  declMarker.style.borderRadius = '2px';
+  declMarker.style.width = '6px';
+  declMarker.style.height = '32px';
+  declMarker.style.background = 'var(--app-progress-blue)';
+  declMarker.style.borderRadius = '3px';
   declMarker.style.boxShadow = '0 2px 6px rgba(0,0,0,0.18)';
   declMarker.style.transform = 'translateX(-50%)';
   declMarker.style.zIndex = '10';
   declMarker.title = `Deklaracja: ${declaredScore.toFixed(2)} / 3`;
   declBarWrap.appendChild(declMarker);
-  // numeric marker (right side)
+  declRow.appendChild(declBarWrap);
   const declNum = document.createElement('div');
-  declNum.style.textAlign = 'right';
+  declNum.style.whiteSpace = 'nowrap';
   declNum.style.fontWeight = '700';
   declNum.textContent = `${declaredScore.toFixed(2)} / 3`;
-  // place numeric value above the bar (so it's not beside it)
-  declNum.style.marginTop = '4px';
-  declNum.style.marginBottom = '6px';
-  declBlock.appendChild(declNum);
-  // place bar in a row (bar only) so numeric is above
-  const declRow = document.createElement('div');
-  declRow.style.display = 'flex';
-  declRow.style.alignItems = 'center';
-  declRow.style.gap = '12px';
-  // ensure the bar grows horizontally
-  declBarWrap.style.flex = '1 1 auto';
-  declBarWrap.style.minWidth = '0';
-  declRow.appendChild(declBarWrap);
+  declRow.appendChild(declNum);
   declBlock.appendChild(declRow);
 
   // answered count removed from profile card per user request
 
   // small list of subsections with mini progress and declaration marker
   const subList = document.createElement('div');
-  subList.style.display = 'flex';
-  subList.style.flexDirection = 'column';
-  subList.style.gap = '8px';
-  subList.style.marginTop = '12px';
-  // colors: use CSS variables defined in styles.css
-  const fillColor = 'var(--app-progress-blue)';
-  const fillBg = 'var(--surface-level-100, #eee)';
-  const markerColor = 'var(--app-progress-blue)';
+  subList.className = 'profile-sublist';
+  // colors/gradients are defined in CSS variables
   subsections.forEach(ss => {
     const row = document.createElement('div');
-    row.style.display = 'flex';
-    row.style.flexDirection = 'column';
-
     const titleRow = document.createElement('div');
     titleRow.style.display = 'flex';
     titleRow.style.justifyContent = 'space-between';
     titleRow.style.alignItems = 'center';
     const ttl = document.createElement('div'); ttl.style.fontWeight = '600'; ttl.textContent = ss.title;
-    const val = document.createElement('div'); val.style.fontWeight = '700'; val.textContent = `${ss.avg.toFixed(2)} / 3`;
-    titleRow.appendChild(ttl); titleRow.appendChild(val);
+    titleRow.appendChild(ttl);
     row.appendChild(titleRow);
 
-    const barWrap = document.createElement('div');
-    barWrap.style.position = 'relative';
-    barWrap.style.height = '12px';
-    barWrap.style.background = fillBg;
-    barWrap.style.borderRadius = '8px';
-    barWrap.style.overflow = 'hidden';
-    barWrap.style.marginTop = '6px';
-  const fill = document.createElement('div');
-  const pct = (ss.avg / 3) * 100;
-  fill.style.width = `${pct}%`;
-  fill.style.height = '100%';
-  fill.style.borderRadius = '8px';
-  fill.style.transition = 'width .5s ease, background .3s ease';
-  // color based on comparison to declaredScore: green >, red <, blue ==
-  const blue = 'var(--app-progress-blue)';
-  const green = 'var(--app-good)';
-  const red = 'var(--app-bad)';
-  let barColor = blue;
-  // treat equal or greater than declaration as good (green)
-  if (ss.avg >= declaredScore) barColor = green;
-  else if (ss.avg < declaredScore) barColor = red;
-  fill.style.background = barColor;
-    barWrap.appendChild(fill);
-  // declaration marker (vertical line) — styled to match the main declaration marker
-  const marker = document.createElement('div');
-  const markerLeft = (declaredScore / 3) * 100;
-  marker.style.position = 'absolute';
-  marker.style.left = `${markerLeft}%`;
-  marker.style.top = '-8px';
-  marker.style.width = '4px';
-  marker.style.height = '28px';
-  marker.style.background = markerColor;
-  marker.style.borderRadius = '2px';
-  marker.style.boxShadow = '0 2px 6px rgba(0,0,0,0.12)';
-  marker.style.transform = 'translateX(-50%)';
-  marker.style.zIndex = '9';
-  marker.title = `Deklaracja: ${declaredScore.toFixed(2)} / 3`;
-  // allow markers to overflow the mini bar for visibility
-  barWrap.style.overflow = 'visible';
-  barWrap.appendChild(marker);
+    const barRow = document.createElement('div');
+    barRow.style.display = 'flex';
+    barRow.style.alignItems = 'center';
+    barRow.style.gap = '12px';
+    barRow.style.marginTop = '6px';
 
-    row.appendChild(barWrap);
+    const barWrap = document.createElement('div');
+    barWrap.className = 'mini-bar-wrap';
+    barWrap.style.flex = '1 1 auto';
+    barWrap.style.minWidth = '0';
+    const fill = document.createElement('div');
+    fill.className = 'mini-bar-fill';
+    const pct = (ss.avg / 3) * 100;
+    fill.style.width = `${pct}%`;
+    // choose gradient
+    if (ss.avg >= declaredScore) fill.style.background = 'var(--app-gradient-green)';
+    else if (ss.avg < declaredScore) fill.style.background = 'var(--app-gradient-red)';
+    else fill.style.background = 'var(--app-gradient-blue)';
+    barWrap.appendChild(fill);
+
+    // declaration marker
+    const marker = document.createElement('div');
+    const markerLeft = (declaredScore / 3) * 100;
+    marker.style.position = 'absolute';
+    marker.style.left = `${markerLeft}%`;
+    marker.style.top = '-8px';
+    marker.style.width = '6px';
+    marker.style.height = '32px';
+    marker.style.background = 'var(--app-progress-blue)';
+    marker.style.borderRadius = '3px';
+    marker.style.boxShadow = '0 2px 6px rgba(0,0,0,0.12)';
+    marker.style.transform = 'translateX(-50%)';
+    marker.style.zIndex = '9';
+    marker.title = `Deklaracja: ${declaredScore.toFixed(2)} / 3`;
+    barWrap.appendChild(marker);
+
+    barRow.appendChild(barWrap);
+    const progVal = document.createElement('div'); progVal.className = 'progress-value'; progVal.textContent = `${ss.avg.toFixed(2)} / 3`;
+    barRow.appendChild(progVal);
+
+    row.appendChild(barRow);
     subList.appendChild(row);
   });
   profileCard.appendChild(declBlock);
@@ -843,7 +822,7 @@ function renderSummary() {
   const grid = document.createElement('div');
   grid.style.display = 'flex';
   grid.style.flexDirection = 'column';
-  grid.style.gap = '12px';
+  grid.style.gap = '8px';
   grid.style.marginTop = '12px';
   for (const s of subsections) {
     const c = document.createElement('div');
