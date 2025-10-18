@@ -6,6 +6,27 @@
 .matrix-row { display:flex; gap:0.5rem; align-items:center; margin-top:0.5rem; }
 .matrix-row > div { display:flex; flex-direction:column; align-items:center; }
 .form { margin-bottom:0.75rem; }
+/* ensure each option line (radio/checkbox/text option) has comfortable spacing */
+.form > fieldset > div,
+.form > div,
+.form > label,
+.form > fieldset > label {
+	margin-bottom: 16px;
+}
+
+/* Override Pico's inline radio/checkbox label rule so spacing is consistent
+	 Use fairly specific selectors to win over Pico's rule which uses [type=...] ~ label */
+.form input[type="radio"] ~ label,
+.form input[type="radio"] + label,
+.form input[type="checkbox"] ~ label,
+.form input[type="checkbox"] + label {
+	/* keep label on same line as control, and use parent <div> for spacing */
+	display: inline-block !important;
+	margin-bottom: 0 !important;
+	margin-left: 8px;
+	vertical-align: middle;
+	cursor: pointer;
+}
 /* Make only fieldset legends bold (question group titles) */
 fieldset legend {
 	font-weight: 700;

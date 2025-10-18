@@ -209,8 +209,15 @@ function renderSection(idx) {
       renderSection(currentSectionIdx);
     }
     else {
-      // last section -> show summary view built from survey structure and collected answers
-      renderSummary();
+      // last section -> scroll to top then show summary view built from survey structure and collected answers
+      try {
+        // smooth scroll to top for a nicer transition, then render summary after a short delay
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => { renderSummary(); }, 300);
+      } catch (e) {
+        // fallback: immediate render if scrolling isn't supported
+        renderSummary();
+      }
     }
   });
   sectionNav.appendChild(secNext);
