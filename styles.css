@@ -1,0 +1,171 @@
+/* Small layout tweaks */
+.container { max-width: 900px; margin: 2rem auto; }
+.intro-grid { display:flex; justify-content:space-between; gap:1rem; align-items:center; margin-bottom:1rem; }
+.intro-grid .right { display:flex; gap:.5rem; }
+.card { padding:1rem; border-radius:8px; box-shadow: 0 0 0 1px var(--pico-border, rgba(0,0,0,0.04)); }
+.matrix-row { display:flex; gap:0.5rem; align-items:center; margin-top:0.5rem; }
+.matrix-row > div { display:flex; flex-direction:column; align-items:center; }
+.form { margin-bottom:0.75rem; }
+/* Make only fieldset legends bold (question group titles) */
+fieldset legend {
+	font-weight: 700;
+}
+/* ghost button initial styles moved lower to use Pico variable fallbacks */
+/* allow sections to explicitly pick up Pico's background and color variables per docs */
+section {
+	background-color: var(--pico-background-color);
+	color: var(--pico-color);
+	padding: 0.5rem 0;
+}
+
+.secondary { opacity: 0.95; color: var(--pico-secondary, rgba(0,0,0,0.6)); }
+
+/* Improve contrast for secondary/helper text while respecting light/dark themes */
+@media (prefers-color-scheme: light) {
+	/* darken slightly in light mode to ensure contrast against light background */
+	.secondary { color: var(--pico-secondary, rgba(0,0,0,0.75)); }
+}
+@media (prefers-color-scheme: dark) {
+	/* keep secondary light in dark mode, but ensure it's not too faint */
+	.secondary { color: var(--pico-secondary, rgba(255,255,255,0.85)); }
+}
+
+/* Align Next to the left edge of the content area */
+#nav-actions { justify-content: flex-start; gap: 0.5rem; }
+
+/* When Prev is moved above the section, give it some spacing */
+#prev { margin-bottom: 0.6rem; }
+
+/* Ghost button: subtle, low-contrast outline/hover suitable for headers */
+.ghost {
+	/* Use Pico variables so the ghost button follows Pico's theming
+		 like the outline variant in Pico (uses --pico-primary / --pico-color) */
+	--pico-background-color: transparent;
+	--pico-color: var(--pico-primary, #0d6efd);
+	background: transparent;
+	border: none;
+	color: var(--pico-color);
+	padding: 0.35rem 0rem;
+	border-radius: 6px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.ghost:hover {
+	background: var(--pico-surface-hover, rgba(255,255,255,0.02));
+}
+
+@media (prefers-color-scheme: light) {
+	.ghost { color: var(--pico-color); }
+	.ghost:hover { background: var(--pico-surface-hover, rgba(0,0,0,0.03)); }
+}
+
+.ghost svg { width: 1rem; height: 1rem; display: inline-block; fill: currentColor; }
+
+/* Make the inline Prev ghost hover match the visual of the Next/outline hover (use Pico primary hover variable) */
+.inline-prev.ghost:hover {
+	/* mirror Pico's outline hover custom properties so computed color/border match exactly */
+	--pico-background-color: transparent;
+	--pico-color: var(--pico-primary-hover);
+	--pico-border-color: var(--pico-primary-hover);
+}
+
+@media (prefers-color-scheme: light) {
+	.inline-prev.ghost:hover {
+		--pico-background-color: transparent;
+		--pico-color: var(--pico-primary-hover);
+		--pico-border-color: var(--pico-primary-hover);
+	}
+}
+
+/* App-specific theme-aware variables for separators and card borders
+	 - in light mode we make hr and card borders slightly darker for contrast
+	 - in dark mode we make them slightly lighter so they remain visible
+*/
+:root {
+	/* stronger defaults so separators and borders are visible */
+	--app-hr-color: rgba(0,0,0,0.12);
+	--app-card-border: rgba(0,0,0,0.14);
+	--app-card-shadow: rgba(0,0,0,0.06);
+	/* semantic colors for progress comparisons -- map to Pico color tokens where possible */
+	--app-progress-blue: var(--pico-color-azure-300, rgb(81,180,255));
+	--app-bad: var(--pico-color-red-350, rgb(241,121,97));
+	--app-good: var(--pico-color-lime-100, #C1F335);
+	--app-amber: var(--pico-color-amber-150, #FECC63);
+}
+@media (prefers-color-scheme: light) {
+	:root {
+		--app-hr-color: #dcdcdc; /* light gray visible on white */
+		--app-card-border: #bfbfbf; /* slightly darker border for cards */
+		--app-card-shadow: rgba(0,0,0,0.06);
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--app-hr-color: rgba(255,255,255,0.12);
+		--app-card-border: rgba(255,255,255,0.12);
+		--app-card-shadow: rgba(0,0,0,0.18);
+	}
+}
+
+/* Apply the variables */
+hr {
+    height: 0;
+    margin: var(--pico-typography-spacing-vertical) 0;
+    border: 0;
+    border-top: 1px solid rgb(131 131 131);
+    color: inherit;
+}
+
+.card {
+	border: 1px solid rgb(131 131 131);
+	box-shadow: 0 6px 12px -8px rgb(131 131 131);
+}
+
+/* Badges used in summary cards */
+
+/* Progress / declaration blue color used consistently */
+:root {
+	--app-progress-blue: #0d6efd;
+}
+@media (prefers-color-scheme: dark) {
+	:root { --app-progress-blue: #2b6cff; }
+}
+
+/* Style native progress element to use our blue (or per-element --progress-fill) */
+progress {
+	width: 100%;
+	height: 12px;
+	appearance: none;
+}
+progress::-webkit-progress-bar { background: var(--surface-level-100, #eee); border-radius: 8px; }
+/* Allow each <progress> to set --progress-fill; otherwise fall back to the app blue gradient */
+progress::-webkit-progress-value { background: var(--progress-fill, linear-gradient(90deg,var(--app-progress-blue), var(--app-progress-blue))); border-radius: 8px; }
+progress::-moz-progress-bar { background: var(--progress-fill, linear-gradient(90deg,var(--app-progress-blue), var(--app-progress-blue))); border-radius: 8px; }
+
+.badge {
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	border-radius: 4px;
+	font-weight: 700;
+	font-size: 0.8rem;
+	color: #000; /* default badge text color: black per request */
+	margin-bottom: 8px;
+}
+.badge--green { background: var(--app-good); color: #000; }
+.badge--red { background: var(--app-bad); color: #000; }
+.badge--orange { background: var(--app-amber); color: #000; }
+
+/* make badge colors slightly muted in dark mode for better contrast */
+@media (prefers-color-scheme: dark) {
+	.badge--green { background: #23863a; }
+	.badge--red { background: #b31d28; }
+	.badge--orange { background: #d98d00; color: #fff; }
+}
+@media (prefers-color-scheme: dark) {
+	.inline-prev.ghost:hover {
+		--pico-background-color: transparent;
+		--pico-color: var(--pico-primary-hover);
+		--pico-border-color: var(--pico-primary-hover);
+	}
+}

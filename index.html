@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jak dbasz o swoje zdrowie?</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <!-- theme toggle placed at the very top of the header -->
+      <div style="display:flex; justify-content:flex-end;">
+        <label class="switch" for="theme-toggle">
+          <input id="theme-toggle" type="checkbox" role="switch" aria-checked="false" aria-label="Tryb ciemny" />
+          <span>Tryb ciemny</span>
+        </label>
+      </div>
+      <h1 id="survey-title">Ładowanie...</h1>
+      <p id="survey-desc"></p>
+    </header>
+
+  <section class="intro-grid" id="intro-grid">
+    <div>
+      <!-- <h2>Witaj</h2> -->
+      <p>Kwestionariusz ten pozwoli Ci zastanowić się nad tym, jak dbasz o swoje zdrowie. Wypełniając go, zdasz sobie sprawę z tego, jak często w swoim codziennym życiu podejmujesz zachowania sprzyjające zdrowiu. Dokonanie takiej samooceny może stać się punktem wyjścia do tego, byś zmieniła/zmienił swój styl życia w kierunku prozdrowotnym.</p>
+      <div class="form">
+        <button id="start" class="outline">Wypełnij kwestionariusz</button>
+      </div>
+    </div>
+    <div class="right">
+      <!-- empty for now -->
+    </div>
+  </section>
+
+    <div id="app"></div>
+
+    <nav class="actions" id="nav-actions" style="display:none;">
+      <button id="prev" class="secondary outline" style="margin-right: 16px;">Poprzednie</button>
+      <button id="next" class="outline">Dalej</button>
+    </nav>
+
+    <footer>
+      <hr/>
+      <small>Autorką kwestionariusza jest dr hab. n. spol. Magdalena Woynarowska<br/> Wersja online: Marcin Krzanicki</small>
+    </footer>
+  </main>
+
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>

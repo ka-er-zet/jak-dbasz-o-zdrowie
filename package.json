@@ -1,0 +1,17 @@
+{
+  "name": "zdrowie",
+  "version": "1.0.0",
+  "description": "Pliki: - `index.html` – główny interfejs użytkownika - `app.js` – prosty renderer ankiety, zapis/wczytywanie do localStorage, eksport wyników - `pytania.json` – definicja pytań (już w repozytorium) - `styles.css` – drobne poprawki wyglądu",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axe-core": "^4.11.0",
+    "puppeteer": "^24.25.0",
+    "serve": "^14.2.5"
+  }
+}
