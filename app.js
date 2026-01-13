@@ -15,9 +15,19 @@ const subSectionIdxBySection = {};
 function loadSurvey() {
   return fetch(surveyUrl).then(r => r.json()).then(data => {
     survey = data;
+    // enforce: make all questions required by default except for section 'risk_behaviors_q3'
+    try {
+      for (const sec of survey.sections || []) {
+        const skip = sec.id === 'risk_behaviors_q3';
+        if (sec.questions) for (const q of sec.questions) if (!skip) q.required = true;
+        if (sec.sub_sections) for (const sub of sec.sub_sections) for (const q of sub.questions) if (!skip) q.required = true;
+      }
+    } catch (e) { console.warn('Error enforcing required flags:', e); }
+
     el('#survey-title').textContent = survey.title || 'Ankieta';
-      // do not show description until a section is rendered; intro note will be shown under section 0
-      el('#survey-desc').textContent = '';
+    // set header subtitle as h2 and description as paragraph (intro.note)
+    el('#survey-subtitle').textContent = survey.subtitle || '';
+    el('#survey-desc').textContent = (survey.intro && survey.intro.note) ? survey.intro.note : '';
     // don't render sections yet; wait for user to press Start
     const startBtn = el('#start');
     if (startBtn) startBtn.disabled = false;
@@ -308,9 +318,16 @@ function renderSingleChoice(q) {
     // initialize checked state from stored answers (so Prev restores selections)
     try {
       const saved = answers[q.id];
-      if (typeof saved !== 'undefined' && String(saved) === String(input.value)) input.checked = true;
+      // consider numeric equivalence as well as string equality
+      if (typeof saved !== 'undefined' && (String(saved) === String(input.value) || Number(saved) === Number(input.value))) input.checked = true;
     } catch (e) {}
-    input.addEventListener('change', () => { answers[q.id] = input.value; clearHelper(q.id); });
+    input.addEventListener('change', () => {
+      // normalize stored value: if option has explicit score use Number, otherwise keep value (e.g., gender)
+      if (opt.score !== undefined) answers[q.id] = Number(opt.score);
+      else if (opt.value !== undefined && !Number.isNaN(Number(opt.value))) answers[q.id] = Number(opt.value);
+      else answers[q.id] = input.value;
+      clearHelper(q.id);
+    });
     // if this is the gender selector, trigger filtering immediately when changed
     if (q.id === 'gender') {
       input.addEventListener('change', () => {
@@ -607,6 +624,12 @@ function renderSummary() {
   const h = document.createElement('h2');
   h.textContent = 'Wyniki';
   container.appendChild(h);
+  // short explanation which averaging method is used (sum / total questions)
+  const explain = document.createElement('p');
+  explain.className = 'secondary';
+  explain.style.marginTop = '6px';
+  explain.textContent = 'Średnie liczone są jako suma punktów podzielona przez łączną liczbę pytań (braki traktowane są jako 0).';
+  container.appendChild(explain);
 
   // back button to return
   const backBtn = document.createElement('button');
@@ -671,10 +694,12 @@ function renderSummary() {
       let answeredCount = 0;
       const topItems = [];
       for (const q of questions) {
-        const val = Number(answers[q.id] ?? 0);
+        const raw = answers[q.id];
+        const val = Number(raw ?? 0);
         if (!Number.isNaN(val)) {
           obtained += val;
-          if (String(answers[q.id]) !== 'undefined' && String(answers[q.id]) !== '0') answeredCount++;
+          // consider any defined answer (including 0) as answered
+          if (typeof raw !== 'undefined') answeredCount++;
         }
         if (Number(val) === 3) topItems.push(q.text);
       }
@@ -925,6 +950,11 @@ function initControls() {
   if (startBtn) startBtn.addEventListener('click', () => {
       const intro = el('#intro-grid');
       if (intro) intro.style.display = 'none';
+      // hide subtitle and description when the survey starts (keep main title visible)
+      const sub = el('#survey-subtitle');
+      if (sub) sub.style.display = 'none';
+      const desc = el('#survey-desc');
+      if (desc) desc.style.display = 'none';
       currentSectionIdx = 0;
       renderSection(currentSectionIdx);
   });
@@ -978,7 +1008,8 @@ function computeScore() {
   let total = 0;
   for (const k in answers) {
     const v = answers[k];
-    if (typeof v === 'number') total += v;
+    const n = Number(v);
+    if (!Number.isNaN(n)) total += n;
   }
   return total;
 }

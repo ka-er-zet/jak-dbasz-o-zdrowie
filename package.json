@@ -4,7 +4,9 @@
   "description": "Pliki: - `index.html` – główny interfejs użytkownika - `app.js` – prosty renderer ankiety, zapis/wczytywanie do localStorage, eksport wyników - `pytania.json` – definicja pytań (już w repozytorium) - `styles.css` – drobne poprawki wyglądu",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:logic": "node tests/run-logic-tests.js",
+    "test:e2e": "node tests/run-tests.js"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,9 @@
 {
   "title": "Sprawdź, jak dbasz o swoje zdrowie!",
+  "subtitle": "Kwestionariusz dla osób dorosłych",
+  "intro": {
+    "note": "Kwestionariusz ten pozwoli Ci zastanowić się nad tym, jak dbasz o swoje zdrowie. Wypełniając go, zdasz sobie sprawę z tego, jak często w swoim codziennym życiu podejmujesz zachowania sprzyjające zdrowiu. Dokonanie takiej samooceny może stać się punktem wyjścia do tego, byś zmieniła/zmienił swój styl życia w kierunku prozdrowotnym."
+  },
   "sections": [
     {
       "id": "demographics",
@@ -55,71 +59,88 @@
           "title": "1. Żywienie",
           "questions": [
             {"id": "i_q1", "text": "Spożywam regularnie co najmniej 3 posiłki dziennie"},
-            {"id": "i_q2", "text": "Unikam pojadania między posiłkami, zwłaszcza słonych i słodkich przekąsek"},
-            {"id": "i_q3", "text": "Unikam przejadania się (jedzenia za dużo na jeden raz)"},
-            {"id": "i_q4", "text": "Jem warzywa i owoce kilka razy dziennie"},
-            {"id": "i_q5", "text": "Jem codziennie pełnoziarniste produkty zbożowe (np. chleb pełnoziarnisty, kaszę gryczaną, płatki owsiane itp.)"},
-            {"id": "i_q6", "text": "Spożywam kilka razy dziennie mleko lub jego przetwory (np. jogurt, kefir, maślankę, sery) albo roślinne zamienniki mleka wzbogacane w wapń (np. napój sojowy, migdałowy z wapniem)"},
-            {"id": "i_q7", "text": "Jem potrawy z nasion roślin strączkowych (fasoli, grochu, ciecierzycy, soczewicy) kilka razy w tygodniu"},
-            {"id": "i_q8", "text": "Jem ryby co najmniej 2 razy w tygodniu"},
-            {"id": "i_q9", "text": "Jem orzechy, pestki, nasiona (pestki dyni, nasiona słonecznika) kilka razy w tygodniu"},
-            {"id": "i_q10", "text": "Ograniczam jedzenie mięsa czerwonego (np. wołowiny, wieprzowiny) i przetworów mięsnych (kiełbasy, wędliny, boczek)"},
-            {"id": "i_q11", "text": "Ograniczam spożycie produktów typu fast-food"},
-            {"id": "i_q12", "text": "Ograniczam spożycie soli (unikam słonych przekąsek, np. chipsów, nie dosalam potraw)"},
-            {"id": "i_q13", "text": "Ograniczam jedzenie słodyczy"},
-            {"id": "i_q14", "text": "Ograniczam picie słodkich napojów (zamiast nich piję wodę)"},
-            {"id": "i_q15", "text": "Unikam picia napojów energetyzujących"}
+            {"id": "i_q2", "text": "W czasie posiłków koncentruję się na jedzeniu (nie zajmuję się wtedy innymi sprawami, np. nie oglądam telewizji, nie czytam książki, nie korzystam z telefonu)."},
+            {"id": "i_q4", "text": "Unikam podjadania słonych i słodkich przekąsek między posiłkami"},
+            {"id": "i_q5", "text": "Jem warzywa i owoce kilka razy dziennie"},
+            {"id": "i_q6", "text": "Jem codziennie pełnoziarniste produkty zbożowe (np. chleb pełnoziarnisty, kaszę gryczaną, płatki owsiane itp.)"},
+            {"id": "i_q7", "text": "Spożywam kilka razy dziennie mleko lub jego przetwory (np. jogurt, kefir, maślankę, sery) albo roślinne zamienniki mleka wzbogacane w wapń (np. napój sojowy, migdałowy z wapniem)"},
+            {"id": "i_q8", "text": "Jem potrawy z nasion roślin strączkowych (fasoli, grochu, ciecierzycy, soczewicy) kilka razy w tygodniu"},
+            {"id": "i_q9", "text": "Jem ryby co najmniej 2 razy w tygodniu"},
+            {"id": "i_q10", "text": "Jem orzechy, pestki, nasiona (pestki dyni, nasiona słonecznika) kilka razy w tygodniu"},
+            {"id": "i_q11", "text": "Ograniczam jedzenie mięsa czerwonego (np. wołowiny, wieprzowiny) i przetworów mięsnych (kiełbas, wędlin, boczku)"},
+            {"id": "i_q12", "text": "Ograniczam spożycie produktów typu fast-food"},
+            {"id": "i_q13", "text": "Ograniczam spożycie soli (unikam słonych przekąsek, np. chipsów, nie dosalam potraw)"},
+            {"id": "i_q14", "text": "Ograniczam jedzenie słodyczy"},
+            {"id": "i_q15", "text": "Ograniczam picie słodkich napojów (zamiast nich piję wodę)"},
+            {"id": "i_q16", "text": "Unikam picia napojów energetyzujących"},
+            {"id": "i_q17", "text": "Kiedy robię zakupy, czytam uważnie etykiety produktów żywnościowych, sprawdzając ich skład i termin przydatności do spożycia"}
           ]
         },
         {
           "id": "section_ii_physical_activity",
           "title": "2. Aktywność fizyczna",
           "questions": [
-            {"id": "ii_q16", "text": "Codziennie przeznaczam łącznie co najmniej 30 minut na zajęcia związane z umiarkowanym lub dużym wysiłkiem fizycznym (np. szybki marsz, bieganie, jazda na rowerze, uprawianie sportu)"},
-            {"id": "ii_q17", "text": "Co najmniej 2 razy w tygodniu wykonuję ćwiczenia zwiększające siłę głównych grup mięśni, podczas których brakuje mi tchu, pocę się, odczuwam zmęczenie"},
-            {"id": "ii_q18", "text": "Zwiększam ilość ruchu i wysiłków fizycznych w codziennym życiu (np. gdy jest to możliwe, chodzę pieszo, jeżdżę rowerem, zamiast jeździć samochodem, autobusem, chodzę po schodach, zamiast jeździć windą)"},
-            {"id": "ii_q19", "text": "Co najmniej 1 raz w tygodniu uczęszczam na zorganizowane zajęcia związane z aktywnością fizyczną (np. pływanie, aerobic, taniec, siłownia, gry zespołowe)"},
-            {"id": "ii_q20", "text": "Ograniczam czas spędzany dla rozrywki w bezruchu przed urządzeniami ekranowymi (np. telefonem, komputerem/ laptopem, telewizorem)"}
+            {"id": "ii_q18", "text": "Codziennie przeznaczam łącznie co najmniej 30 minut na zajęcia związane z umiarkowanym lub dużym wysiłkiem fizycznym (np. szybki marsz, bieganie, jazda na rowerze, uprawianie sportu)"},
+            {"id": "ii_q19", "text": "Co najmniej 2 razy w tygodniu wykonuję ćwiczenia zwiększające siłę głównych grup mięśni, podczas których brakuje mi tchu, pocę się, odczuwam zmęczenie"},
+            {"id": "ii_q20", "text": "Zwiększam ilość ruchu i wysiłków fizycznych w codziennym życiu (np. gdy jest to możliwe, chodzę pieszo, jeżdżę rowerem, zamiast jeździć samochodem, autobusem, chodzę po schodach, zamiast jeździć windą)"},
+            {"id": "ii_q21", "text": "Ograniczam czas spędzany w pozycji siedzącej przed ekranem (telefon, komputer, TV) w celach rekreacyjnych."}
           ]
         },
         {
           "id": "section_iii_sleep_mental_health",
           "title": "3. Sen, odpoczynek i zdrowie psychiczne",
           "questions": [
-            {"id": "iii_q21", "text": "Śpię w nocy około 6-7 godzin"},
-            {"id": "iii_q22", "text": "Kładę się spać o podobnej porze"},
-            {"id": "iii_q23", "text": "Poświęcam co najmniej 20-30 minut dziennie na relaks/odpoczynek (np. „wyluzowuję się”, wykonuję ćwiczenia relaksacyjne, robię to, co lubię)"},
-            {"id": "iii_q24", "text": "Dobrze radzę sobie ze stresem (napięciami)"},
-            {"id": "iii_q25", "text": "Pozytywnie myślę o sobie"},
-            {"id": "iii_q26", "text": "Dobrze gospodaruję swoim czasem"},
-            {"id": "iii_q27", "text": "Zwracam się do innych osób o pomoc w trudnych dla mnie sytuacjach (np. do rodziny, przyjaciół)"},
-            {"id": "iii_q28", "text": "Spędzam czas ze znajomymi/przyjaciółmi co najmniej 1 raz w miesiącu"}
+            {"id": "iii_q22", "text": "Śpię od 7 do 9 godzin na dobę"},
+            {"id": "iii_q23", "text": "Kładę się spać o podobnej porze"},
+            {"id": "iii_q24", "text": "Poświęcam co najmniej 20-30 minut dziennie na relaks/odpoczynek (np. „wyluzowuję się”, wykonuję ćwiczenia relaksacyjne, robię to, co lubię)"},
+            {"id": "iii_q25", "text": "Dobrze radzę sobie ze stresem (napięciami)"},
+            {"id": "iii_q26", "text": "Pozytywnie myślę o sobie"},
+            {"id": "iii_q27", "text": "Dobrze gospodaruję swoim czasem"},
+            {"id": "iii_q28", "text": "Oddzielam czas pracy od czasu wolnego i ograniczam obowiązki zawodowe w domu"},
+            {"id": "iii_q29", "text": "Zwracam się do innych osób o pomoc w trudnych dla mnie sytuacjach (np. do rodziny, przyjaciół)"},
+            {"id": "iii_q30", "text": "Spędzam czas ze znajomymi/przyjaciółmi co najmniej 1 raz w miesiącu"}
           ]
         },
         {
           "id": "section_iv_body_care",
           "title": "4. Dbałość o ciało",
           "questions": [
-            {"id": "iv_q29", "text": "Ubieram się odpowiednio do pogody (tzn. nie narażam się na zmarznięcie, nie przegrzewam się)"},
-            {"id": "iv_q30", "text": "Unikam nadmiernego opalania się (np. używam kremów ochronnych, nakrywam głowę, unikam opalania się między godz. 10 a 14)"},
-            {"id": "iv_q31", "text": "Czyszczę zęby co najmniej 2 razy dziennie"},
-            {"id": "iv_q32", "text": "Chodzę do dentysty na badania kontrolne co najmniej 1 raz w roku"},
-            {"id": "iv_q33", "text": "W okresie od września do kwietnia przyjmuję codziennie witaminę D"},
-            {"id": "iv_q34", "text": "Wykonuję samobadanie piersi 1 raz w miesiącu", "gender_specific": "female"},
-            {"id": "iv_q35", "text": "Wykonuję samobadanie jąder 1 raz w miesiącu", "gender_specific": "male"},
-            {"id": "iv_q36", "text": "Często i dokładnie myję ręce z użyciem wody i mydła (jeśli nie mam do nich dostępu, dezynfekuje ręce płynami z alkoholem)"},
-            {"id": "iv_q37", "text": "Zgłaszam się na szczepienia ochronne zgodnie z zaleceniami lekarza"}
+            {"id": "iv_q31", "text": "Myję ręce wodą i mydłem przez ok. 30 sekund przed jedzeniem, po toalecie, po kontakcie ze zwierzętami lub brudem oraz po powrocie do domu"},
+            {"id": "iv_q32", "text": "Czyszczę zęby co najmniej 2 razy dziennie"},
+            {"id": "iv_q33", "text": "Chodzę do dentysty na badania kontrolne co najmniej 1 raz w roku"},
+            {"id": "iv_q34", "text": "Latem chronię się przed nadmierną ekspozycją na słońce (ograniczam przebywanie na słońcu w godzinach 10–16, zakrywam głowę i ciało, noszę okulary przeciwsłoneczne, stosuję krem z filtrem UV)"},
+            {"id": "iv_q35", "text": "Codziennie przyjmuje witaminę D w okresie od października do kwietnia lub dłużej zgodnie z zaleceniami lekarza"},
+            {"id": "iv_q36", "text": "Zgłaszam się na szczepienia ochronne zgodnie z zaleceniami lekarza"},
+            {"id": "iv_q37", "text": "Wykonuję badania profilaktyczne zgodnie z zaleceniami lekarzy"},
+            {"id": "iv_q38", "text": "Co miesiąc wykonuję samobadanie znamion skórnych"},
+            {"id": "iv_q39", "text": "Wykonuję samobadanie piersi 1 raz w miesiącu", "gender_specific": "female"},
+            {"id": "iv_q40", "text": "Wykonuję samobadanie jąder 1 raz w miesiącu", "gender_specific": "male"}
+            
+          ]
+        },
+        {
+          "id": "section_v_hygiene",
+          "title": "5. Dbałość o środowisko",
+          "questions": [
+            {"id": "v_q41", "text": "Unikam marnowania żywności (np. planuję zakupy i posiłki, kontroluję stan produktów i daty ich przydatności do spożycia, wykorzystuję to, co nie zostało zjedzone, np. mrożąc to, wekując)"},
+            {"id": "v_q42", "text": "Starannie segreguję śmieci"},
+            {"id": "v_q43", "text": "Rezygnuję z kąpieli w wannie na rzecz szybkiej kąpieli pod prysznicem"},
+            {"id": "v_q44", "text": "Zakręcam kran np. w czasie mycia zębów, rąk, golenia, mydlenia się pod prysznicem (unikam niepotrzebnego wylewania wody)"},
+            {"id": "v_q45", "text": "Wyłączam światło w pomieszczeniu, w którym nikt nie przebywa"},
+            {"id": "v_q46", "text": "Na zakupy zabieram własne torby wielorazowego użytku, ograniczam zużycie jednorazowych torebek plastikowych"},
+            {"id": "v_q47", "text": "Rezygnuję z używania jednorazowych plastikowych: kubków, talerzy i sztućców, słomek"},
+            {"id": "v_q48", "text": "Miejsca, w których przebywam (np. las, park, ulica), zostawiam po sobie  czyste (zabieram swoje śmieci)"},
+            {"id": "v_q49", "text": "Ograniczam zużycie papieru (np. piszę/rysuję po dwóch stronach kartki, piszę i drukuję na papierze makulaturowym)"}
           ]
         },
         {
           "id": "section_v_safety_behavior",
-          "title": "5. Zachowanie bezpieczeństwa",
+          "title": "6. Zachowanie bezpieczeństwa",
           "questions": [
-            {"id": "v_q38", "text": "Zapinam pasy bezpieczeństwa w czasie jazdy samochodem osobowym"},
-            {"id": "v_q39", "text": "Używam kasku, jeżdżąc na rowerze -- jeśli nie jeździsz, opuść ten punkt", "note": "W kontekście obliczeń w Części II, to pytanie jest opcjonalne (*)"},
-            {"id": "v_q40", "text": "Przestrzegam przepisów ruchu drogowego, gdy poruszam się pieszo, gdy jadę rowerem lub prowadzę samochód"},
-            {"id": "v_q41", "text": "Zachowuję się bezpiecznie nad wodą (np. kąpię się tylko w miejscach strzeżonych, nie skaczę „na główkę”, zakładam kapok, gdy pływam łódką, kajakiem)"},
-            {"id": "v_q42", "text": "Przestrzegam zasad bezpieczeństwa, posługując się urządzeniami elektrycznymi, maszynami oraz używając substancji chemicznych, fajerwerków"}
+            {"id": "vi_q50", "text": "Zapinam pasy bezpieczeństwa w czasie jazdy samochodem osobowym"},
+            {"id": "vi_q51", "text": "Przestrzegam przepisów ruchu drogowego, gdy poruszam się pieszo, gdy jadę rowerem lub prowadzę samochód"},
+            {"id": "vi_q52", "text": "Zachowuję się bezpiecznie nad wodą (np. kąpię się tylko w miejscach strzeżonych, nie skaczę „na główkę”, zakładam kapok, gdy pływam łódką, kajakiem)"},
+            {"id": "vi_q53", "text": "Przestrzegam zasad bezpieczeństwa, posługując się urządzeniami elektrycznymi, maszynami oraz używając substancji chemicznych, fajerwerków"}
           ]
         }
       ]
@@ -136,14 +157,15 @@
       "sub_sections": [
         {
           "id": "section_vi_substance_abuse",
-          "title": "6. Nieużywanie substancji psychoaktywnych",
+          "title": "7. Nieużywanie substancji psychoaktywnych",
           "questions": [
-            {"id": "vi_q43", "text": "Alkohol piję sporadycznie (lub wcale)"},
-            {"id": "vi_q44", "text": "Nie upijam się (nie wypijam dużej ilości alkoholu na jeden raz)"},
-            {"id": "vi_q45", "text": "Nie palę papierosów"},
-            {"id": "vi_q46", "text": "Unikam przebywania wśród osób palących papierosy"},
-            {"id": "vi_q47", "text": "Nie używam innych substancji psychoaktywnych (narkotyków, dopalaczy)"},
-            {"id": "vi_q48", "text": "Nie nadużywam leków nieprzepisanych przez lekarza (przeciwbólowych, uspokajających, nasennych)"}
+            {"id": "vii_q54", "text": "Alkohol piję sporadycznie (lub wcale)"},
+            {"id": "vii_q55", "text": "Nie upijam się (nie wypijam dużej ilości alkoholu na jeden raz)"},
+            {"id": "vii_q56", "text": "Nie palę papierosów"},
+            {"id": "vii_q57", "text": "Unikam przebywania wśród osób palących papierosy"},
+            {"id": "vii_q58", "text": "Nie używam innych substancji psychoaktywnych (narkotyków, dopalaczy)"},
+            {"id": "vii_q59", "text": "Nie nadużywam leków nieprzepisanych przez lekarza (przeciwbólowych, uspokajających, nasennych)"},
+            {"id": "vii_q60", "text": "Nie korzystam z solarium"}
           ]
         }
       ]
